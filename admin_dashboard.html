@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f4f6f9;
+    }
+
+    h2 {
+      background: #2c3e50;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #34495e;
+      color: white;
+    }
+
+    .btn {
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .approve {
+      background: #27ae60;
+      color: white;
+    }
+
+    .reject {
+      background: #e74c3c;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Attendance Log (Today)</h2>
+  <table>
+    <tr>
+      <th>Employee ID</th>
+      <th>Name</th>
+      <th>Check-in Time</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td>Rahul Sharma</td>
+      <td>09:10 AM</td>
+      <td>Present</td>
+    </tr>
+    <tr>
+      <td>102</td>
+      <td>Priya Singh</td>
+      <td>--</td>
+      <td>Absent</td>
+    </tr>
+  </table>
+
+  <h2>Leave Approval Panel</h2>
+  <table>
+    <tr>
+      <th>Employee ID</th>
+      <th>Name</th>
+      <th>Leave Date</th>
+      <th>Reason</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>Amit Verma</td>
+      <td>2026-07-05</td>
+      <td>Medical</td>
+      <td>
+        <button class="btn approve">Approve</button>
+        <button class="btn reject">Reject</button>
+      </td>
+    </tr>
+    <tr>
+      <td>104</td>
+      <td>Sneha Roy</td>
+      <td>2026-07-06</td>
+      <td>Family Work</td>
+      <td>
+        <button class="btn approve">Approve</button>
+        <button class="btn reject">Reject</button>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
