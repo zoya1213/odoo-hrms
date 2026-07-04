@@ -2,348 +2,412 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
+  <!-- Tailwind CSS CDN for futuristic UI rendering -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter Font Family for clean enterprise typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f4f6f9;
-    }
-
-    h2 {
-      background: #2c3e50;
-      color: white;
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 30px;
-      background: white;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-    }
-
-    th {
-      background: #34495e;
-      color: white;
-    }
-
-    .btn {
-      padding: 5px 10px;
-      border: none;
-      cursor: pointer;
-      border-radius: 3px;
-    }
-
-    .approve {
-      background: #27ae60;
-      color: white;
-    }
-
-    .reject {
-      background: #e74c3c;
-      color: white;
-    }
+    body { font-family: 'Inter', sans-serif; }
+    /* Optimization for custom scrollbars to enhance matrix telemetry aesthetics */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.01); }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
   </style>
 </head>
+<body class="bg-[#060a17] text-white min-h-screen p-6 antialiased selection:bg-blue-600/30">
 
-<body>
-  <h2>Employee List</h2>
-  <table>
-    <tr>
-      <th>Employee ID</th>
-      <th>Name</th>
-      <th>Department</th>
-      <th>Designation</th>
-      <th>Email</th>
-    </tr>
-    <tr>
-      <td>101</td>
-      <td>Rahul Sharma</td>
-      <td>Engineering</td>
-      <td>Software Engineer</td>
-      <td>rahul@company.com</td>
-    </tr>
-    <tr>
-      <td>102</td>
-      <td>Priya Singh</td>
-      <td>HR</td>
-      <td>HR Manager</td>
-      <td>priya@company.com</td>
-    </tr>
-    <tr>
-      <td>103</td>
-      <td>Amit Verma</td>
-      <td>Operations</td>
-      <td>Operations Analyst</td>
-      <td>amit@company.com</td>
-    </tr>
-    <tr>
-      <td>104</td>
-      <td>Sneha Roy</td>
-      <td>Marketing</td>
-      <td>SEO Specialist</td>
-      <td>sneha@company.com</td>
-    </tr>
-  </table>
+  <!-- GLOBAL CYBER TELEMETRY HEADER -->
+  <header class="max-w-[1600px] mx-auto mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-white/10">
+    <div>
+      <h1 class="text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-200">
+        ADMIN DASHBOARD
+      </h1>
+      <p class="text-xs text-slate-400 uppercase tracking-widest mt-1">Every workday, perfectly aligned </p>
+    </div>
+    <div class="flex gap-4 text-xs font-mono text-slate-400 bg-white/[0.02] border border-white/5 px-4 py-2 rounded backdrop-blur-md">
+      <div>SYSTEM_STATUS: <span class="text-emerald-400 font-bold animate-pulse">ONLINE</span></div>
+    </div>
+  </header>
 
-  <h2>Attendance Management</h2>
+  <!-- MAIN CONTAINER FOR CORE MODULES -->
+  <main class="space-y-8 max-w-[1600px] mx-auto">
 
-  <h3>Daily Attendance Log (Today)</h3>
-  <table style="margin-bottom: 40px;">
-    <tr>
-      <th>Employee ID</th>
-      <th>Name</th>
-      <th>Check-In Time</th>
-      <th>Check-Out Time</th>
-      <th>Status Update</th>
-      <th>Action</th>
-    </tr>
-    <tr>
-      <td>101</td>
-      <td>Rahul Sharma</td>
-      <td>09:10 AM</td>
-      <td>06:05 PM</td>
-      <td>
-        <select style="padding: 5px; border-radius: 3px;">
-          <option value="present" selected>Present</option>
-          <option value="absent">Absent</option>
-          <option value="half-day">Half Day</option>
-          <option value="leave">Leave</option>
-        </select>
-      </td>
-      <td><button class="btn approve">Update</button></td>
-    </tr>
-    <tr>
-      <td>102</td>
-      <td>Priya Singh</td>
-      <td>--</td>
-      <td>--</td>
-      <td>
-        <select style="padding: 5px; border-radius: 3px;">
-          <option value="present">Present</option>
-          <option value="absent" selected>Absent</option>
-          <option value="half-day">Half Day</option>
-          <option value="leave">Leave</option>
-        </select>
-      </td>
-      <td><button class="btn approve">Update</button></td>
-    </tr>
-    <tr>
-      <td>103</td>
-      <td>Amit Verma</td>
-      <td>--</td>
-      <td>--</td>
-      <td>
-        <select style="padding: 5px; border-radius: 3px;">
-          <option value="present">Present</option>
-          <option value="absent">Absent</option>
-          <option value="half-day">Half Day</option>
-          <option value="leave" selected>Leave</option>
-        </select>
-      </td>
-      <td><button class="btn approve">Update</button></td>
-    </tr>
-    <tr>
-      <td>104</td>
-      <td>Sneha Roy</td>
-      <td>09:15 AM</td>
-      <td>01:30 PM</td>
-      <td>
-        <select style="padding: 5px; border-radius: 3px;">
-          <option value="present">Present</option>
-          <option value="absent">Absent</option>
-          <option value="half-day" selected>Half Day</option>
-          <option value="leave">Leave</option>
-        </select>
-      </td>
-      <td><button class="btn approve">Update</button></td>
-    </tr>
-  </table>
+    <!-- CONTAINER 1: EMPLOYEE DATABASE MATRIX -->
+    <section class="bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-lg p-6 shadow-2xl">
+      <div class="mb-4">
+        <h2 class="text-base font-semibold tracking-wide text-white uppercase font-mono border-l-2 border-blue-500 pl-3">Employee List</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-white/10 text-slate-400 text-xs tracking-wider uppercase font-mono bg-white/[0.01]">
+              <th class="p-4 font-medium">Employee ID</th>
+              <th class="p-4 font-medium">Name</th>
+              <th class="p-4 font-medium">Department</th>
+              <th class="p-4 font-medium">Designation</th>
+              <th class="p-4 font-medium">Email System Node</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 text-slate-200">
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400 font-semibold">#101</td>
+              <td class="p-4 font-medium text-white">Rahul Sharma</td>
+              <td class="p-4 text-slate-300">Engineering</td>
+              <td class="p-4 text-slate-300">Software Engineer</td>
+              <td class="p-4 font-mono text-xs text-slate-400">rahul@company.com</td>
+            </tr>
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400 font-semibold">#102</td>
+              <td class="p-4 font-medium text-white">Priya Singh</td>
+              <td class="p-4 text-slate-300">HR</td>
+              <td class="p-4 text-slate-300">HR Manager</td>
+              <td class="p-4 font-mono text-xs text-slate-400">priya@company.com</td>
+            </tr>
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400 font-semibold">#103</td>
+              <td class="p-4 font-medium text-white">Amit Verma</td>
+              <td class="p-4 text-slate-300">Operations</td>
+              <td class="p-4 text-slate-300">Operations Analyst</td>
+              <td class="p-4 font-mono text-xs text-slate-400">amit@company.com</td>
+            </tr>
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400 font-semibold">#104</td>
+              <td class="p-4 font-medium text-white">Sneha Roy</td>
+              <td class="p-4 text-slate-300">Marketing</td>
+              <td class="p-4 text-slate-300">SEO Specialist</td>
+              <td class="p-4 font-mono text-xs text-slate-400">sneha@company.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-  <h3>Weekly Attendance Summary</h3>
-  <table>
-    <tr>
-      <th>Employee ID</th>
-      <th>Name</th>
-      <th>Mon (06/29)</th>
-      <th>Tue (06/30)</th>
-      <th>Wed (07/01)</th>
-      <th>Thu (07/02)</th>
-      <th>Fri (07/03)</th>
-    </tr>
-    <tr>
-      <td>101</td>
-      <td>Rahul Sharma</td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #f39c12; font-weight: bold;">Half Day</span></td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-    </tr>
-    <tr>
-      <td>102</td>
-      <td>Priya Singh</td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #e74c3c; font-weight: bold;">Absent</span></td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #2980b9; font-weight: bold;">Leave</span></td>
-    </tr>
-    <tr>
-      <td>103</td>
-      <td>Amit Verma</td>
-      <td><span style="color: #2980b9; font-weight: bold;">Leave</span></td>
-      <td><span style="color: #2980b9; font-weight: bold;">Leave</span></td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-    </tr>
-    <tr>
-      <td>104</td>
-      <td>Sneha Roy</td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
-      <td><span style="color: #f39c12; font-weight: bold;">Half Day</span></td>
-      <td><span style="color: #e74c3c; font-weight: bold;">Absent</span></td>
-    </tr>
-  </table>
+    <!-- CONTAINER 2: ATTENDANCE MANAGEMENT ENGINE -->
+    <section class="bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-lg p-6 shadow-2xl">
+      <div class="mb-6">
+        <h2 class="text-base font-semibold tracking-wide text-white uppercase font-mono border-l-2 border-blue-500 pl-3">Attendance Tracking</h2>
+      </div>
 
-  <h2>Leave Approval Panel</h2>
-  <table>
-    <tr>
-      <th>Employee ID</th>
-      <th>Name</th>
-      <th>Leave Date</th>
-      <th>Reason</th>
-      <th>Admin Comments</th>
-      <th>Action</th>
-    </tr>
-    <tr>
-      <td>103</td>
-      <td>Amit Verma</td>
-      <td>2026-07-05</td>
-      <td>Medical</td>
-      <td>
-        <input type="text" placeholder="Add a comment (e.g., Medical certificate verified)" style="width: 90%; padding: 5px; border: 1px solid #ccc; border-radius: 3px;">
-      </td>
-      <td>
-        <button class="btn approve">Approve</button>
-        <button class="btn reject">Reject</button>
-      </td>
-    </tr>
-    <tr>
-      <td>104</td>
-      <td>Sneha Roy</td>
-      <td>2026-07-06</td>
-      <td>Family Work</td>
-      <td>
-        <input type="text" placeholder="Add a comment..." style="width: 90%; padding: 5px; border: 1px solid #ccc; border-radius: 3px;">
-      </td>
-      <td>
-        <button class="btn approve">Approve</button>
-        <button class="btn reject">Reject</button>
-      </td>
-    </tr>
-  </table>
-  
-  <h2>Employee Profile Management</h2>
-  <table>
-    <tr>
-      <th>Employee ID</th>
-      <th>Full Name</th>
-      <th>Email Address</th>
-      <th>Department</th>
-      <th>Designation</th>
-      <th>Role / Access Level</th>
-      <th>Actions</th>
-    </tr>
-    <tr>
-      <td>101</td>
-      <td>Rahul Sharma</td>
-      <td>rahul@company.com</td>
-      <td>Engineering</td>
-      <td>Software Engineer</td>
-      <td><span style="color: #7f8c8d; font-weight: bold;">User</span></td>
-      <td>
-        <button class="btn edit-btn" onclick="openEditModal('101')">Edit Profile</button>
-      </td>
-    </tr>
-    <tr>
-      <td>102</td>
-      <td>Priya Singh</td>
-      <td>priya@company.com</td>
-      <td>HR</td>
-      <td>HR Manager</td>
-      <td><span style="color: #2c3e50; font-weight: bold;">Manager</span></td>
-      <td>
-        <button class="btn edit-btn" onclick="openEditModal('102')">Edit Profile</button>
-      </td>
-    </tr>
-    <tr>
-      <td>103</td>
-      <td>Amit Verma</td>
-      <td>amit@company.com</td>
-      <td>Operations</td>
-      <td>Operations Analyst</td>
-      <td><span style="color: #7f8c8d; font-weight: bold;">User</span></td>
-      <td>
-        <button class="btn edit-btn" onclick="openEditModal('103')">Edit Profile</button>
-      </td>
-    </tr>
-    <tr>
-      <td>104</td>
-      <td>Sneha Roy</td>
-      <td>sneha@company.com</td>
-      <td>Marketing</td>
-      <td>SEO Specialist</td>
-      <td><span style="color: #7f8c8d; font-weight: bold;">User</span></td>
-      <td>
-        <button class="btn edit-btn" onclick="openEditModal('104')">Edit Profile</button>
-      </td>
-    </tr>
-  </table>
-<h2>Salary Management</h2>
-  <table>
-    <tr>
-      <th>Employee ID</th>
-      <th>Name</th>
-      <th>Base Salary</th>
-      <th>Deductions</th>
-      <th>Net Payable</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-    <tr>
-      <td>101</td>
-      <td>Rahul Sharma</td>
-      <td>₹50,000</td>
-      <td>₹0</td>
-      <td>₹50,000</td>
-      <td>Pending</td>
-      <td>
-        <button class="btn process">Release Pay</button>
-      </td>
-    </tr>
-    <tr>
-      <td>102</td>
-      <td>Priya Singh</td>
-      <td>₹60,000</td>
-      <td>₹2,000</td>
-      <td>₹58,000</td>
-      <td>Paid</td>
-      <td>
-        <button class="btn process" style="background: #95a5a6; cursor: not-allowed;" disabled>Processed</button>
-      </td>
-    </tr>
-  </table>
+      <!-- Part A: Daily Timeline Matrix Log -->
+      <div class="mb-6">
+        <h3 class="text-xs font-semibold tracking-widest text-slate-400 uppercase font-mono mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-blue-500 rounded-full inline-block"></span> Daily Attendance Log (Today)
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="border-b border-white/10 text-slate-400 text-xs tracking-wider uppercase font-mono bg-white/[0.01]">
+                <th class="p-4 font-medium">Employee ID</th>
+                <th class="p-4 font-medium">Name</th>
+                <th class="p-4 font-medium">Check-In Time</th>
+                <th class="p-4 font-medium">Check-Out Time</th>
+                <th class="p-4 font-medium w-48">Status Control</th>
+                <th class="p-4 font-medium text-right">System Sync</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-slate-200">
+              <tr class="hover:bg-white/[0.01] transition">
+                <td class="p-4 font-mono text-xs text-blue-400">#101</td>
+                <td class="p-4 font-medium">Rahul Sharma</td>
+                <td class="p-4 font-mono text-emerald-400">09:10 AM</td>
+                <td class="p-4 font-mono text-slate-300">06:05 PM</td>
+                <td class="p-4">
+                  <select class="w-full bg-[#0c1224] border border-white/10 text-xs rounded p-1.5 text-white focus:outline-none focus:border-blue-500 font-medium">
+                    <option value="present" selected>Present</option>
+                    <option value="absent">Absent</option>
+                    <option value="half-day">Half Day</option>
+                    <option value="leave">Leave</option>
+                  </select>
+                </td>
+                <td class="p-4 text-right">
+                  <button class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-semibold px-4 py-1.5 rounded hover:opacity-90 transition shadow-lg tracking-wider uppercase font-mono">Update</button>
+                </td>
+              </tr>
+              <tr class="hover:bg-white/[0.01] transition">
+                <td class="p-4 font-mono text-xs text-blue-400">#102</td>
+                <td class="p-4 font-medium">Priya Singh</td>
+                <td class="p-4 font-mono text-slate-500">--</td>
+                <td class="p-4 font-mono text-slate-500">--</td>
+                <td class="p-4">
+                  <select class="w-full bg-[#0c1224] border border-white/10 text-xs rounded p-1.5 text-white focus:outline-none focus:border-blue-500 font-medium">
+                    <option value="present">Present</option>
+                    <option value="absent" selected>Absent</option>
+                    <option value="half-day">Half Day</option>
+                    <option value="leave">Leave</option>
+                  </select>
+                </td>
+                <td class="p-4 text-right">
+                  <button class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-semibold px-4 py-1.5 rounded hover:opacity-90 transition shadow-lg tracking-wider uppercase font-mono">Update</button>
+                </td>
+              </tr>
+              <tr class="hover:bg-white/[0.01] transition">
+                <td class="p-4 font-mono text-xs text-blue-400">#103</td>
+                <td class="p-4 font-medium">Amit Verma</td>
+                <td class="p-4 font-mono text-slate-500">--</td>
+                <td class="p-4 font-mono text-slate-500">--</td>
+                <td class="p-4">
+                  <select class="w-full bg-[#0c1224] border border-white/10 text-xs rounded p-1.5 text-white focus:outline-none focus:border-blue-500 font-medium">
+                    <option value="present">Present</option>
+                    <option value="absent">Absent</option>
+                    <option value="half-day">Half Day</option>
+                    <option value="leave" selected>Leave</option>
+                  </select>
+                </td>
+                <td class="p-4 text-right">
+                  <button class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-semibold px-4 py-1.5 rounded hover:opacity-90 transition shadow-lg tracking-wider uppercase font-mono">Update</button>
+                </td>
+              </tr>
+              <tr class="hover:bg-white/[0.01] transition">
+                <td class="p-4 font-mono text-xs text-blue-400">#104</td>
+                <td class="p-4 font-medium">Sneha Roy</td>
+                <td class="p-4 font-mono text-emerald-400">09:15 AM</td>
+                <td class="p-4 font-mono text-slate-300">01:30 PM</td>
+                <td class="p-4">
+                  <select class="w-full bg-[#0c1224] border border-white/10 text-xs rounded p-1.5 text-white focus:outline-none focus:border-blue-500 font-medium">
+                    <option value="present">Present</option>
+                    <option value="absent">Absent</option>
+                    <option value="half-day" selected>Half Day</option>
+                    <option value="leave">Leave</option>
+                  </select>
+                </td>
+                <td class="p-4 text-right">
+                  <button class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-semibold px-4 py-1.5 rounded hover:opacity-90 transition shadow-lg tracking-wider uppercase font-mono">Update</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Part B: Weekly Metric Analytics Grid Summary -->
+      <div>
+        <h3 class="text-xs font-semibold tracking-widest text-slate-400 uppercase font-mono mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-indigo-500 rounded-full inline-block"></span> Weekly Attendance Summary
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="border-b border-white/10 text-slate-400 text-xs tracking-wider uppercase font-mono bg-white/[0.01]">
+                <th class="p-4 font-medium">Employee ID</th>
+                <th class="p-4 font-medium">Name</th>
+                <th class="p-4 font-medium text-center">Mon (06/29)</th>
+                <th class="p-4 font-medium text-center">Tue (06/30)</th>
+                <th class="p-4 font-medium text-center">Wed (07/01)</th>
+                <th class="p-4 font-medium text-center">Thu (07/02)</th>
+                <th class="p-4 font-medium text-center">Fri (07/03)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-slate-200">
+              <tr class="hover:bg-white/[0.01] transition">
+                <td class="p-4 font-mono text-xs text-blue-400">#101</td>
+                <td class="p-4 font-medium">Rahul Sharma</td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-amber-400 font-semibold text-xs tracking-wide uppercase">Half Day</span></td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+              </tr>
+              <tr class="hover:bg-white/[0.01] transition">
+                <td class="p-4 font-mono text-xs text-blue-400">#102</td>
+                <td class="p-4 font-medium">Priya Singh</td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-rose-500 font-semibold text-xs tracking-wide uppercase">Absent</span></td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-blue-400 font-semibold text-xs tracking-wide uppercase">Leave</span></td>
+              </tr>
+              <tr class="hover:bg-white/[0.01] transition">
+                <td class="p-4 font-mono text-xs text-blue-400">#103</td>
+                <td class="p-4 font-medium">Amit Verma</td>
+                <td class="p-4 text-center"><span class="text-blue-400 font-semibold text-xs tracking-wide uppercase">Leave</span></td>
+                <td class="p-4 text-center"><span class="text-blue-400 font-semibold text-xs tracking-wide uppercase">Leave</span></td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+              </tr>
+              <tr class="hover:bg-white/[0.01] transition">
+                <td class="p-4 font-mono text-xs text-blue-400">#104</td>
+                <td class="p-4 font-medium">Sneha Roy</td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase">Present</span></td>
+                <td class="p-4 text-center"><span class="text-amber-400 font-semibold text-xs tracking-wide uppercase">Half Day</span></td>
+                <td class="p-4 text-center"><span class="text-rose-500 font-semibold text-xs tracking-wide uppercase">Absent</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTAINER 3: LEAVE APPROVAL MODERATION DESK -->
+    <section class="bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-lg p-6 shadow-2xl">
+      <div class="mb-4">
+        <h2 class="text-base font-semibold tracking-wide text-white uppercase font-mono border-l-2 border-blue-500 pl-3">Leave Approval Panel</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-white/10 text-slate-400 text-xs tracking-wider uppercase font-mono bg-white/[0.01]">
+              <th class="p-4 font-medium">Employee ID</th>
+              <th class="p-4 font-medium">Name</th>
+              <th class="p-4 font-medium">Leave Target Date</th>
+              <th class="p-4 font-medium">Stated Reason</th>
+              <th class="p-4 font-medium max-w-xs">Admin Audit Comments</th>
+              <th class="p-4 font-medium text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 text-slate-200">
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400">#103</td>
+              <td class="p-4 font-medium text-white">Amit Verma</td>
+              <td class="p-4 font-mono text-xs">2026-07-05</td>
+              <td class="p-4 text-slate-300">Medical</td>
+              <td class="p-4">
+                <input type="text" value="Medical certificate verified" placeholder="Add compliance log..." class="w-full bg-[#0c1224]/60 border border-white/10 rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 placeholder:text-slate-600 font-mono">
+              </td>
+              <td class="p-4 text-right space-x-2 whitespace-nowrap">
+                <button class="bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded hover:bg-emerald-600 hover:text-white transition uppercase tracking-wider font-mono">Approve</button>
+                <button class="bg-rose-600/20 text-rose-400 border border-rose-500/30 text-xs font-semibold px-3 py-1.5 rounded hover:bg-rose-600 hover:text-white transition uppercase tracking-wider font-mono">Reject</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400">#104</td>
+              <td class="p-4 font-medium text-white">Sneha Roy</td>
+              <td class="p-4 font-mono text-xs">2026-07-06</td>
+              <td class="p-4 text-slate-300">Family Work</td>
+              <td class="p-4">
+                <input type="text" placeholder="Add compliance log..." class="w-full bg-[#0c1224]/60 border border-white/10 rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 placeholder:text-slate-600 font-mono">
+              </td>
+              <td class="p-4 text-right space-x-2 whitespace-nowrap">
+                <button class="bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1.5 rounded hover:bg-emerald-600 hover:text-white transition uppercase tracking-wider font-mono">Approve</button>
+                <button class="bg-rose-600/20 text-rose-400 border border-rose-500/30 text-xs font-semibold px-3 py-1.5 rounded hover:bg-rose-600 hover:text-white transition uppercase tracking-wider font-mono">Reject</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CONTAINER 4: PRIVILEGED EMPLOYEE PROFILE ARCHITECTURE -->
+    <section class="bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-lg p-6 shadow-2xl">
+      <div class="mb-4">
+        <h2 class="text-base font-semibold tracking-wide text-white uppercase font-mono border-l-2 border-blue-500 pl-3">Employee Profile</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-white/10 text-slate-400 text-xs tracking-wider uppercase font-mono bg-white/[0.01]">
+              <th class="p-4 font-medium">Employee ID</th>
+              <th class="p-4 font-medium">Full Name</th>
+              <th class="p-4 font-medium">Network Email ID</th>
+              <th class="p-4 font-medium">Department Node</th>
+              <th class="p-4 font-medium">System Designation</th>
+              <th class="p-4 font-medium">Role</th>
+              <th class="p-4 font-medium text-right">System Config</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 text-slate-200">
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400">#101</td>
+              <td class="p-4 font-medium text-white">Rahul Sharma</td>
+              <td class="p-4 font-mono text-xs text-slate-400">rahul@company.com</td>
+              <td class="p-4 text-slate-300">Engineering</td>
+              <td class="p-4 text-slate-300">Software Engineer</td>
+              <td class="p-4"><span class="bg-slate-900 text-slate-400 border border-slate-700/50 px-2 py-0.5 rounded text-xs font-mono font-medium">LVL_0_USER</span></td>
+              <td class="p-4 text-right">
+                <button class="text-xs bg-white/5 border border-white/10 text-slate-200 font-medium px-3 py-1.5 rounded hover:bg-white/10 hover:text-white transition tracking-wide font-mono">Configure</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400">#102</td>
+              <td class="p-4 font-medium text-white">Priya Singh</td>
+              <td class="p-4 font-mono text-xs text-slate-400">priya@company.com</td>
+              <td class="p-4 text-slate-300">HR</td>
+              <td class="p-4 text-slate-300">HR Manager</td>
+              <td class="p-4"><span class="bg-indigo-950 text-indigo-400 border border-indigo-800/50 px-2 py-0.5 rounded text-xs font-mono font-medium">LVL_2_MGR</span></td>
+              <td class="p-4 text-right">
+                <button class="text-xs bg-white/5 border border-white/10 text-slate-200 font-medium px-3 py-1.5 rounded hover:bg-white/10 hover:text-white transition tracking-wide font-mono">Configure</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400">#103</td>
+              <td class="p-4 font-medium text-white">Amit Verma</td>
+              <td class="p-4 font-mono text-xs text-slate-400">amit@company.com</td>
+              <td class="p-4 text-slate-300">Operations</td>
+              <td class="p-4 text-slate-300">Operations Analyst</td>
+              <td class="p-4"><span class="bg-slate-900 text-slate-400 border border-slate-700/50 px-2 py-0.5 rounded text-xs font-mono font-medium">LVL_0_USER</span></td>
+              <td class="p-4 text-right">
+                <button class="text-xs bg-white/5 border border-white/10 text-slate-200 font-medium px-3 py-1.5 rounded hover:bg-white/10 hover:text-white transition tracking-wide font-mono">Configure</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400">#104</td>
+              <td class="p-4 font-medium text-white">Sneha Roy</td>
+              <td class="p-4 font-mono text-xs text-slate-400">sneha@company.com</td>
+              <td class="p-4 text-slate-300">Marketing</td>
+              <td class="p-4 text-slate-300">SEO Specialist</td>
+              <td class="p-4"><span class="bg-slate-900 text-slate-400 border border-slate-700/50 px-2 py-0.5 rounded text-xs font-mono font-medium">LVL_0_USER</span></td>
+              <td class="p-4 text-right">
+                <button class="text-xs bg-white/5 border border-white/10 text-slate-200 font-medium px-3 py-1.5 rounded hover:bg-white/10 hover:text-white transition tracking-wide font-mono">Configure</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CONTAINER 5: PREMIUM PAYROLL CONTROL ENGINE -->
+    <section class="bg-white/[0.02] border border-white/10 backdrop-blur-md rounded-lg p-6 shadow-2xl">
+      <div class="mb-4">
+        <h2 class="text-base font-semibold tracking-wide text-white uppercase font-mono border-l-2 border-blue-500 pl-3">Salary Management</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-white/10 text-slate-400 text-xs tracking-wider uppercase font-mono bg-white/[0.01]">
+              <th class="p-4 font-medium">Employee ID</th>
+              <th class="p-4 font-medium">Name</th>
+              <th class="p-4 font-medium">Base Allocation</th>
+              <th class="p-4 font-medium">System Deductions</th>
+              <th class="p-4 font-medium text-blue-400 font-semibold">Net Liquid Payable</th>
+              <th class="p-4 font-medium">Ledger State</th>
+              <th class="p-4 font-medium text-right">Execution Sequence</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 text-slate-200">
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400">#101</td>
+              <td class="p-4 font-medium text-white">Rahul Sharma</td>
+              <td class="p-4 font-mono text-slate-300">₹50,000</td>
+              <td class="p-4 font-mono text-rose-400">₹0</td>
+              <td class="p-4 font-mono font-semibold text-emerald-400">₹50,000</td>
+              <td class="p-4"><span class="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs px-2 py-0.5 rounded font-mono font-medium uppercase tracking-wide">Pending</span></td>
+              <td class="p-4 text-right">
+                <button class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-semibold px-4 py-1.5 rounded hover:opacity-90 transition shadow-lg tracking-wider uppercase font-mono">Release Pay</button>
+              </td>
+            </tr>
+            <tr class="hover:bg-white/[0.01] transition">
+              <td class="p-4 font-mono text-xs text-blue-400">#102</td>
+              <td class="p-4 font-medium text-white">Priya Singh</td>
+              <td class="p-4 font-mono text-slate-300">₹60,000</td>
+              <td class="p-4 font-mono text-rose-400">₹2,000</td>
+              <td class="p-4 font-mono font-semibold text-emerald-400">₹58,000</td>
+              <td class="p-4"><span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs px-2 py-0.5 rounded font-mono font-medium uppercase tracking-wide">Paid</span></td>
+              <td class="p-4 text-right">
+                <button class="bg-white/5 border border-white/10 text-slate-500 text-xs font-semibold px-4 py-1.5 rounded cursor-not-allowed tracking-wider uppercase font-mono" disabled>Processed</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
 </body>
 </html>
