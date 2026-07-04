@@ -1,88 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Employee Dashboard</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+
+background:#060a17;
+color:white;
+padding:40px;
+
+background-image:
+linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+background-size:40px 40px;
+
+}
+
+.container{
+
+max-width:1200px;
+margin:auto;
+
+}
+
+h1{
+
+font-size:34px;
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+color:#9ca3af;
+margin-bottom:35px;
+
+}
+
+.grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.1);
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 0 20px rgba(0,0,0,.3);
+
+}
+
+.card h2{
+
+margin-bottom:20px;
+color:#60a5fa;
+
+}
+
+.info{
+
+margin:12px 0;
+font-size:16px;
+
+}
+
+button{
+
+padding:13px 28px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:15px;
+font-weight:bold;
+
+margin-right:12px;
+margin-top:10px;
+
+}
+
+.checkin{
+
+background:linear-gradient(to right,#2563eb,#3b82f6);
+color:white;
+
+}
+
+.checkout{
+
+background:linear-gradient(to right,#4f46e5,#7c3aed);
+color:white;
+
+}
+
+.status{
+
+margin-top:20px;
+font-size:17px;
+
+}
+
+label{
+
+display:block;
+margin-top:18px;
+margin-bottom:8px;
+
+font-size:12px;
+letter-spacing:2px;
+color:#9ca3af;
+
+}
+
+input,select,textarea{
+
+width:100%;
+padding:12px;
+
+background:#0f172a;
+
+color:white;
+
+border:1px solid rgba(255,255,255,.1);
+
+border-radius:10px;
+
+}
+
+textarea{
+
+resize:none;
+
+}
+
+.submit{
+
+margin-top:22px;
+width:100%;
+
+background:linear-gradient(to right,#2563eb,#4f46e5);
+
+color:white;
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <h1>Employee Dashboard</h1>
+<div class="container">
 
-    <hr>
+<h1>Employee Dashboard</h1>
 
-    <h2>Employee Details</h2>
+<p class="subtitle">
+Welcome back! Manage attendance and leave requests.
+</p>
 
-<p><strong>Employee ID:</strong> EMP101</p>
-<p><strong>Name:</strong> Rahul Sharma</p>
-<p><strong>Department:</strong> Human Resources</p>
-<p><strong>Email:</strong> rahul.sharma@company.com</p>
+<div class="grid">
 
-<hr>
+<div class="card">
 
-    <h2>Attendance</h2>
+<h2>Employee Details</h2>
 
-    <button>Check In</button>
-    <button>Check Out</button>
+<p class="info"><b>Name:</b> Rahul Sharma</p>
 
-    <p>Status: Not Checked In</p>
-    <hr>
+<p class="info"><b>Employee ID:</b> EMP101</p>
+
+<p class="info"><b>Department:</b> Human Resources</p>
+
+<p class="info"><b>Email:</b> rahul@company.com</p>
+
+<p class="info"><b>Role:</b> Employee</p>
+
+</div>
+
+<div class="card">
+
+<h2>Attendance</h2>
+
+<button class="checkin">Check In</button>
+
+<button class="checkout">Check Out</button>
+
+<p class="status">
+Status : Not Checked In
+</p>
+
+</div>
+
+<div class="card" style="grid-column:1/3;">
 
 <h2>Leave Application</h2>
 
 <form>
 
-<label>From Date:</label><br>
-<input type="date"><br><br>
+<label>FROM DATE</label>
 
-<label>To Date:</label><br>
-<input type="date"><br><br>
+<input type="date">
 
-<label>Leave Type:</label><br>
+<label>TO DATE</label>
+
+<input type="date">
+
+<label>LEAVE TYPE</label>
 
 <select>
-    <option>Casual Leave</option>
-    <option>Sick Leave</option>
-    <option>Paid Leave</option>
+
+<option>Casual Leave</option>
+
+<option>Sick Leave</option>
+
+<option>Paid Leave</option>
+
 </select>
 
-<br><br>
+<label>REASON</label>
 
-<label>Reason:</label><br>
+<textarea rows="5"></textarea>
 
-<textarea rows="4" cols="40"></textarea>
+<button class="submit">
 
-<br><br>
+Submit Leave Request
 
-<button type="submit">Submit Leave Request</button>
+</button>
 
 </form>
-<hr>
 
-<h2>My Leave History</h2>
+</div>
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>From Date</th>
-        <th>To Date</th>
-        <th>Leave Type</th>
-        <th>Status</th>
-    </tr>
+</div>
 
-    <tr>
-        <td>01-07-2026</td>
-        <td>02-07-2026</td>
-        <td>Casual Leave</td>
-        <td>Approved</td>
-    </tr>
-
-    <tr>
-        <td>15-06-2026</td>
-        <td>16-06-2026</td>
-        <td>Sick Leave</td>
-        <td>Pending</td>
-    </tr>
-</table>
+</div>
 
 </body>
+
 </html>
