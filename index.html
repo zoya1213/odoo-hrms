@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odoo HRMS - Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body { background-color: #f8f9fa; }
+        .odoo-purple { background-color: #714B67; } /* Odoo Brand Color */
+        .odoo-text { color: #714B67; }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-md p-8 bg-white rounded-xl shadow-lg border border-gray-100">
+        <div class="text-center mb-8">
+            <h1 class="text-5xl font-extrabold odoo-text tracking-tight">odoo</h1>
+            <p class="text-gray-400 text-xs uppercase tracking-widest mt-2">Human Resource Management</p>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-semibold mb-2" for="employeeId">Employee ID</label>
+                <input class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-[#714B67] transition" 
+                       type="text" id="employeeId" placeholder="e.g. EMP101" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-semibold mb-2" for="email">Email Address</label>
+                <input class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-[#714B67] transition" 
+                       type="email" id="email" placeholder="name@company.com" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-semibold mb-2" for="password">Password</label>
+                <input class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-[#714B67] transition" 
+                       type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-semibold mb-2" for="role">Select Role</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded bg-white focus:outline-none focus:border-[#714B67] transition" id="role" required>
+                    <option value="" disabled selected>Choose your portal role</option>
+                    <option value="employee">Employee</option>
+                    <option value="admin">Admin / HR Officer</option>
+                </select>
+            </div>
+
+            <button class="w-full odoo-purple text-white font-semibold py-2.5 px-4 rounded hover:bg-[#5a3b52] shadow-md transition duration-200 cursor-pointer" type="submit">
+                Sign In
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const role = document.getElementById('role').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password && role) {
+                if (role === 'admin') {
+                    window.location.href = 'admin_dashboard.html';
+                } else if (role === 'employee') {
+                    window.location.href = 'employee_dashboard.html';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
