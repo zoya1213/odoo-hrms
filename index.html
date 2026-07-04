@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odoo HRMS - Premium Portal</title>
-    <!-- Tailwind CSS Browser Component -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="https://www.odoo.com/web/image/website/1/favicon" type="image/x-icon">
     <style>
         @keyframes pulse-slow {
@@ -17,28 +16,25 @@
         }
     </style>
 </head>
-<body class="m-0 p-0 font-['Segoe_UI',system-ui,sans-serif] min-h-screen bg-[#060a17] flex items-center justify-center relative overflow-hidden">
+<body id="app-body" class="m-0 p-0 font-[-apple-system,BlinkMacSystemFont,'Segoe_UI',Roboto,sans-serif] min-h-screen bg-[#060a17] flex items-center justify-center relative overflow-hidden transition-colors duration-500">
 
-    <!-- 🌌 Background Global Layer: Deep Dark Blue Textures -->
     <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 bg-gradient-to-br from-[#060a17] via-[#0b1329] to-[#18153c]"></div>
-        <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-blue-600/15 rounded-full blur-[120px] animate-pulse-slow"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-indigo-500/10 rounded-full blur-[140px] animate-pulse-slow"></div>
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px]"></div>
+        <div id="bg-gradient" class="absolute inset-0 bg-gradient-to-br from-[#060a17] via-[#0b1329] to-[#18153c] transition-all duration-500"></div>
+        <div id="bg-glow-1" class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-blue-600/10 rounded-full blur-[120px] animate-pulse-slow transition-all duration-500"></div>
+        <div id="bg-glow-2" class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-indigo-500/10 rounded-full blur-[140px] animate-pulse-slow transition-all duration-500"></div>
+        <div id="bg-mesh" class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] transition-all duration-500"></div>
     </div>
 
-    <!-- 💳 Glassmorphic White & Dark Blue Content Card Wrapper -->
-    <div class="relative z-10 w-full max-w-4xl mx-4 bg-white/[0.02] backdrop-blur-2xl rounded-[2rem] border border-white/10 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col md:flex-row min-h-[620px]">
+    <div id="main-card" class="relative z-10 w-full max-w-4xl mx-4 bg-white/[0.02] backdrop-blur-2xl rounded-[2rem] border border-white/10 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col md:flex-row min-h-[620px] transition-all duration-500">
         
-        <!-- 🔬 Left Side: Microscopic Tech Texture Wallpaper Panel -->
-        <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center bg-blend-overlay bg-slate-950/85 border-b md:border-b-0 md:border-r border-white/5 relative overflow-hidden">
+        <div id="left-panel" class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between bg-slate-950 border-b md:border-b-0 md:border-r border-white/5 relative overflow-hidden transition-all duration-500" style="background-image: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center;">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50 z-0"></div>
 
             <div class="space-y-4 relative z-10">
                 <h2 class="text-3xl font-light text-white tracking-tight leading-tight">
-                    Human Resource <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-200 font-semibold tracking-wide">Management Portal</span>
+                    Human Resource <br><span id="left-subtitle" class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-200 font-semibold tracking-wide">Management Portal</span>
                 </h2>
-                <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                <p id="left-desc" class="text-slate-400 text-sm leading-relaxed max-w-xs">
                     Access your personalized operational workspace. Secure authentication matrix connecting workforce intelligence.
                 </p>
             </div>
@@ -52,45 +48,53 @@
             </div>
         </div>
 
-        <!-- 🔒 Right Side: Sleek Input Form Panel with Switcher -->
-        <div class="w-full md:w-1/2 p-8 md:p-12 bg-white/[0.01] flex flex-col justify-center">
-            <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <h1 class="text-4xl font-black text-white tracking-tighter uppercase">odoo</h1>
-                    <div class="h-[2px] w-8 bg-blue-500 mt-1"></div>
+        <div class="w-full md:w-1/2 p-8 md:p-12 bg-white/[0.01] flex flex-col justify-center relative z-10">
+            
+            <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-center justify-between w-full sm:w-auto">
+                    <div>
+                        <h1 id="brand-logo" class="text-4xl font-black text-white tracking-tighter uppercase transition-colors duration-300">odoo</h1>
+                        <div class="h-[2px] w-8 bg-blue-500 mt-1"></div>
+                    </div>
+                    
+                    <button type="button" id="theme-toggle-mobile" onclick="toggleThemeSystem()" class="sm:hidden p-2 rounded-xl bg-slate-950 border border-white/10 text-amber-400 transition-all cursor-pointer">
+                        ☀️
+                    </button>
                 </div>
                 
-                <!-- 🔄 Toggle Tabs for Sign In / Sign Up -->
-                <div class="flex p-1 bg-slate-950/80 rounded-xl border border-white/10 self-start">
-                    <button id="tab-signin" class="px-4 py-1.5 text-xs font-medium rounded-lg text-white bg-blue-600 transition-all cursor-pointer" onclick="switchTab('signin')">Sign In</button>
-                    <button id="tab-signup" class="px-4 py-1.5 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer" onclick="switchTab('signup')">Sign Up</button>
+                <div class="flex items-center gap-3 self-start">
+                    <div id="tab-box" class="flex p-1 bg-slate-950 rounded-xl border border-white/10 transition-colors duration-300">
+                        <button id="tab-signin" type="button" class="px-4 py-1.5 text-xs font-medium rounded-lg text-white bg-blue-600 transition-all cursor-pointer" onclick="switchTab('signin')">Sign In</button>
+                        <button id="tab-signup" type="button" class="px-4 py-1.5 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer" onclick="switchTab('signup')">Sign Up</button>
+                    </div>
+
+                    <button type="button" id="theme-toggle-desktop" onclick="toggleThemeSystem()" class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-950 border border-white/10 text-amber-400 font-medium text-xs shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer duration-300">
+                        <span>☀️</span> <span id="toggle-text">Sunlight Mode</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- Error Feedback Box -->
             <div id="error-box" class="hidden mb-4 p-3 bg-red-500/10 border border-red-500/20 text-red-400 text-xs rounded-xl transition-all"></div>
 
-            <!-- 📥 FORM CONTAINER -->
             <form id="auth-form" class="space-y-4">
-                <!-- Employee ID: Hidden for Sign In initially, shown via JavaScript when required -->
-                <div id="field-empid">
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Employee ID</label>
-                    <input type="text" id="input-empid" placeholder="EX: EMP101" class="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all text-sm">
+                <div id="field-empid" class="hidden">
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5 transition-colors duration-300">Employee ID</label>
+                    <input type="text" id="input-empid" placeholder="EX: EMP101" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 transition-all text-sm">
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Email Address</label>
-                    <input type="email" id="input-email" required placeholder="zoya@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all text-sm">
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5 transition-colors duration-300">Email Address</label>
+                    <input type="email" id="input-email" required placeholder="zoya@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 transition-all text-sm">
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Password</label>
-                    <input type="password" id="input-password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all text-sm">
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5 transition-colors duration-300">Password</label>
+                    <input type="password" id="input-password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 transition-all text-sm">
                     <p id="password-hint" class="hidden text-[10px] text-slate-500 mt-1">Must be 8+ chars with a number & special character.</p>
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Role / System Access Mode</label>
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5 transition-colors duration-300">Role / System Access Mode</label>
                     <div class="relative">
                         <select id="input-role" required class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-slate-300 focus:outline-none focus:border-blue-500 transition-all text-sm cursor-pointer appearance-none">
                             <option value="" disabled selected>Select execution flow...</option>
@@ -101,20 +105,19 @@
                     </div>
                 </div>
 
-                <!-- Action Button -->
-                <button type="submit" id="submit-btn" class="w-full mt-2 py-3.5 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-sm rounded-xl shadow-[0_4px_25px_rgba(37,99,235,0.2)] hover:shadow-[0_4px_30px_rgba(37,99,235,0.35)] active:scale-[0.98] transition-all duration-200 cursor-pointer">
+                <button type="submit" id="submit-btn" class="w-full mt-2 py-3.5 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-sm rounded-xl shadow-lg active:scale-[0.98] transition-all duration-200 cursor-pointer">
                     Initialize System Session
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- 🌐 Dynamic Flow Logic Script -->
     <script>
-        let currentMode = 'signin';
+        let authMode = 'signin';
+        let currentTheme = 'moonlight'; // Moonlight corresponds to Dark Mode
 
         function switchTab(mode) {
-            currentMode = mode;
+            authMode = mode;
             const tabSignIn = document.getElementById('tab-signin');
             const tabSignUp = document.getElementById('tab-signup');
             const fieldEmpId = document.getElementById('field-empid');
@@ -127,73 +130,136 @@
             if (mode === 'signin') {
                 tabSignIn.className = "px-4 py-1.5 text-xs font-medium rounded-lg text-white bg-blue-600 transition-all cursor-pointer";
                 tabSignUp.className = "px-4 py-1.5 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer";
-                fieldEmpId.classList.add('hidden'); // Requirements don't mandate Emp ID to log in, only Email + Pass
+                if(currentTheme === 'sunlight') {
+                    tabSignUp.className = "px-4 py-1.5 text-xs font-medium rounded-lg text-slate-500 hover:text-slate-900 transition-all cursor-pointer";
+                }
+                fieldEmpId.classList.add('hidden');
                 document.getElementById('input-empid').removeAttribute('required');
                 passwordHint.classList.add('hidden');
                 submitBtn.innerText = "Initialize System Session";
             } else {
                 tabSignIn.className = "px-4 py-1.5 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer";
+                if(currentTheme === 'sunlight') {
+                    tabSignIn.className = "px-4 py-1.5 text-xs font-medium rounded-lg text-slate-500 hover:text-slate-900 transition-all cursor-pointer";
+                }
                 tabSignUp.className = "px-4 py-1.5 text-xs font-medium rounded-lg text-white bg-blue-600 transition-all cursor-pointer";
-                fieldEmpId.classList.remove('hidden'); // Mandatory for Registration
+                fieldEmpId.classList.remove('hidden');
                 document.getElementById('input-empid').setAttribute('required', 'true');
                 passwordHint.classList.remove('hidden');
                 submitBtn.innerText = "Register New Account";
             }
         }
 
-        // Initialize view
-        switchTab('signin');
+        function toggleThemeSystem() {
+            const body = document.getElementById('app-body');
+            const mainCard = document.getElementById('main-card');
+            const bgGradient = document.getElementById('bg-gradient');
+            const bgGlow1 = document.getElementById('bg-glow-1');
+            const bgGlow2 = document.getElementById('bg-glow-2');
+            const bgMesh = document.getElementById('bg-mesh');
+            const brandLogo = document.getElementById('brand-logo');
+            const toggleDesk = document.getElementById('theme-toggle-desktop');
+            const toggleText = document.getElementById('toggle-text');
+            const toggleMob = document.getElementById('theme-toggle-mobile');
+            const tabBox = document.getElementById('tab-box');
+            
+            const formLabels = body.querySelectorAll('label');
+            const formInputs = body.querySelectorAll('input, select');
 
+            if (currentTheme === 'moonlight') {
+                currentTheme = 'sunlight'; // Changing over to Sunlight Setup
+                
+                bgGradient.className = "absolute inset-0 bg-gradient-to-br from-slate-50 via-slate-100 to-indigo-50/40 transition-all duration-500";
+                bgGlow1.className = "absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-blue-400/10 rounded-full blur-[100px] transition-all duration-500";
+                bgGlow2.className = "absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-indigo-400/5 rounded-full blur-[100px] transition-all duration-500";
+                bgMesh.className = "absolute inset-0 opacity-20 bg-[radial-gradient(#0f172a_1px,transparent_1px)] [background-size:32px_32px] transition-all duration-500";
+                
+                mainCard.className = "relative z-10 w-full max-w-4xl mx-4 bg-white border border-slate-200/80 shadow-[0_30px_70px_-15px_rgba(15,23,42,0.1)] rounded-[2rem] overflow-hidden flex flex-col md:flex-row min-h-[620px] transition-all duration-500";
+                brandLogo.className = "text-4xl font-black text-slate-900 tracking-tighter uppercase transition-colors duration-300";
+                
+                toggleDesk.className = "hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 border border-slate-300/80 text-indigo-700 font-medium text-xs shadow-sm hover:scale-105 active:scale-95 transition-all cursor-pointer duration-300";
+                toggleDesk.innerHTML = "<span>🌙</span> <span>Moonlight Mode</span>";
+                toggleMob.className = "sm:hidden p-2 rounded-xl bg-slate-100 border border-slate-300 text-indigo-700 transition-all cursor-pointer";
+                toggleMob.innerText = "🌙";
+                
+                tabBox.className = "flex p-1 bg-slate-100 rounded-xl border border-slate-200 transition-colors duration-300";
+                
+                formLabels.forEach(label => { label.className = "block text-[10px] font-bold uppercase tracking-widest text-slate-600 mb-1.5 transition-colors duration-300"; });
+                formInputs.forEach(input => {
+                    input.className = "w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200/80 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 transition-all text-sm";
+                });
+                
+                // Keep selector tab styling pristine
+                switchTab(authMode);
+            } else {
+                currentTheme = 'moonlight'; // Back to Moonlight
+                
+                bgGradient.className = "absolute inset-0 bg-gradient-to-br from-[#060a17] via-[#0b1329] to-[#18153c] transition-all duration-500";
+                bgGlow1.className = "absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-blue-600/10 rounded-full blur-[120px] transition-all duration-500";
+                bgGlow2.className = "absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-indigo-500/10 rounded-full blur-[140px] transition-all duration-500";
+                bgMesh.className = "absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:32px_32px] transition-all duration-500";
+                
+                mainCard.className = "relative z-10 w-full max-w-4xl mx-4 bg-white/[0.02] backdrop-blur-2xl rounded-[2rem] border border-white/10 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col md:flex-row min-h-[620px] transition-all duration-500";
+                brandLogo.className = "text-4xl font-black text-white tracking-tighter uppercase transition-colors duration-300";
+                
+                toggleDesk.className = "hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-950 border border-white/10 text-amber-400 font-medium text-xs shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer duration-300";
+                toggleDesk.innerHTML = "<span>☀️</span> <span>Sunlight Mode</span>";
+                toggleMob.className = "sm:hidden p-2 rounded-xl bg-slate-950 border border-white/10 text-amber-400 transition-all cursor-pointer";
+                toggleMob.innerText = "☀️";
+                
+                tabBox.className = "flex p-1 bg-slate-950 rounded-xl border border-white/10 transition-colors duration-300";
+                
+                formLabels.forEach(label => { label.className = "block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5 transition-colors duration-300"; });
+                formInputs.forEach(input => {
+                    input.className = "w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 transition-all text-sm";
+                });
+                
+                switchTab(authMode);
+            }
+        }
+
+        // Form Submit Redirection Flow
         document.getElementById('auth-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = document.getElementById('input-email').value;
-            const password = document.getElementById('input-password').value;
-            const role = document.getElementById('input-role').value;
+            
+            const roleSelect = document.getElementById('input-role');
+            const selectedText = roleSelect.options[roleSelect.selectedIndex].text;
+            const submitBtn = document.getElementById('submit-btn');
             const errorBox = document.getElementById('error-box');
+            const password = document.getElementById('input-password').value;
 
             errorBox.classList.add('hidden');
 
-            if (!role) {
-                errorBox.innerText = "Please select a System Access Role/Mode first!";
-                errorBox.classList.remove('hidden');
-                return;
-            }
-
-            if (currentMode === 'signin') {
-                // Sign In Requirements Flow
-                if (email && password) {
-                    // Simulating a minor check for verification feedback
-                    if (password.length < 4) {
-                        errorBox.innerText = "Access Denied: Incorrect authentication credentials matrix.";
-                        errorBox.classList.remove('hidden');
+            if (authMode === 'signin') {
+                submitBtn.innerText = "Processing Telemetry...";
+                
+                setTimeout(() => {
+                    if (selectedText.includes('Employee') || selectedText.includes('Staff')) {
+                        window.location.href = 'employee_dashboard.html';
+                    } else if (selectedText.includes('HR') || selectedText.includes('Admin') || selectedText.includes('Officer')) {
+                        window.location.href = 'admin_dashboard.html';
                     } else {
-                        submitBtn.innerText = "Processing Telemetry...";
-                        setTimeout(() => {
-                            if (role === 'employee') {
-                                window.location.href = 'employee_dashboard.html';
-                            } else if (role === 'admin') {
-                                window.location.href = 'admin_dashboard.html';
-                            }
-                        }, 800);
+                        errorBox.innerText = "Please select a valid Access Flow View!";
+                        errorBox.classList.remove('hidden');
+                        submitBtn.innerText = "Initialize System Session";
                     }
-                }
+                }, 400);
             } else {
-                // Sign Up Security Rules Check
+                // Sign Up Rule Check
                 const hasNumber = /\d/.test(password);
                 if (password.length < 8 || !hasNumber) {
-                    errorBox.innerText = "Security Rule Violation: Password must be at least 8 characters and contain numbers.";
+                    errorBox.innerText = "Security Matrix Failure: Password must be 8+ characters containing numeric components.";
                     errorBox.classList.remove('hidden');
                     return;
                 }
                 
-                submitBtn.innerText = "Sending Verification Link...";
+                submitBtn.innerText = "Dispatching Link...";
                 setTimeout(() => {
-                    alert("Registration successful! Email verification link dispatched. Please check your corporate inbox.");
+                    alert("Account setup active! Check inbox for link authorization confirmation.");
                     switchTab('signin');
                 }, 1000);
             }
         });
     </script>
-
 </body>
 </html>
