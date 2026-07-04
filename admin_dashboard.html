@@ -94,25 +94,126 @@
     </tr>
   </table>
 
-  <h2>Attendance Log (Today)</h2>
-  <table>
+  <h2>Attendance Management</h2>
+
+  <h3>Daily Attendance Log (Today)</h3>
+  <table style="margin-bottom: 40px;">
     <tr>
       <th>Employee ID</th>
       <th>Name</th>
-      <th>Check-in Time</th>
-      <th>Status</th>
+      <th>Check-In Time</th>
+      <th>Check-Out Time</th>
+      <th>Status Update</th>
+      <th>Action</th>
     </tr>
     <tr>
       <td>101</td>
       <td>Rahul Sharma</td>
       <td>09:10 AM</td>
-      <td>Present</td>
+      <td>06:05 PM</td>
+      <td>
+        <select style="padding: 5px; border-radius: 3px;">
+          <option value="present" selected>Present</option>
+          <option value="absent">Absent</option>
+          <option value="half-day">Half Day</option>
+          <option value="leave">Leave</option>
+        </select>
+      </td>
+      <td><button class="btn approve">Update</button></td>
     </tr>
     <tr>
       <td>102</td>
       <td>Priya Singh</td>
       <td>--</td>
-      <td>Absent</td>
+      <td>--</td>
+      <td>
+        <select style="padding: 5px; border-radius: 3px;">
+          <option value="present">Present</option>
+          <option value="absent" selected>Absent</option>
+          <option value="half-day">Half Day</option>
+          <option value="leave">Leave</option>
+        </select>
+      </td>
+      <td><button class="btn approve">Update</button></td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>Amit Verma</td>
+      <td>--</td>
+      <td>--</td>
+      <td>
+        <select style="padding: 5px; border-radius: 3px;">
+          <option value="present">Present</option>
+          <option value="absent">Absent</option>
+          <option value="half-day">Half Day</option>
+          <option value="leave" selected>Leave</option>
+        </select>
+      </td>
+      <td><button class="btn approve">Update</button></td>
+    </tr>
+    <tr>
+      <td>104</td>
+      <td>Sneha Roy</td>
+      <td>09:15 AM</td>
+      <td>01:30 PM</td>
+      <td>
+        <select style="padding: 5px; border-radius: 3px;">
+          <option value="present">Present</option>
+          <option value="absent">Absent</option>
+          <option value="half-day" selected>Half Day</option>
+          <option value="leave">Leave</option>
+        </select>
+      </td>
+      <td><button class="btn approve">Update</button></td>
+    </tr>
+  </table>
+
+  <h3>Weekly Attendance Summary</h3>
+  <table>
+    <tr>
+      <th>Employee ID</th>
+      <th>Name</th>
+      <th>Mon (06/29)</th>
+      <th>Tue (06/30)</th>
+      <th>Wed (07/01)</th>
+      <th>Thu (07/02)</th>
+      <th>Fri (07/03)</th>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td>Rahul Sharma</td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #f39c12; font-weight: bold;">Half Day</span></td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+    </tr>
+    <tr>
+      <td>102</td>
+      <td>Priya Singh</td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #e74c3c; font-weight: bold;">Absent</span></td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #2980b9; font-weight: bold;">Leave</span></td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>Amit Verma</td>
+      <td><span style="color: #2980b9; font-weight: bold;">Leave</span></td>
+      <td><span style="color: #2980b9; font-weight: bold;">Leave</span></td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+    </tr>
+    <tr>
+      <td>104</td>
+      <td>Sneha Roy</td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #27ae60; font-weight: bold;">Present</span></td>
+      <td><span style="color: #f39c12; font-weight: bold;">Half Day</span></td>
+      <td><span style="color: #e74c3c; font-weight: bold;">Absent</span></td>
     </tr>
   </table>
 
@@ -123,6 +224,7 @@
       <th>Name</th>
       <th>Leave Date</th>
       <th>Reason</th>
+      <th>Admin Comments</th>
       <th>Action</th>
     </tr>
     <tr>
@@ -130,6 +232,9 @@
       <td>Amit Verma</td>
       <td>2026-07-05</td>
       <td>Medical</td>
+      <td>
+        <input type="text" placeholder="Add a comment (e.g., Medical certificate verified)" style="width: 90%; padding: 5px; border: 1px solid #ccc; border-radius: 3px;">
+      </td>
       <td>
         <button class="btn approve">Approve</button>
         <button class="btn reject">Reject</button>
@@ -141,11 +246,15 @@
       <td>2026-07-06</td>
       <td>Family Work</td>
       <td>
+        <input type="text" placeholder="Add a comment..." style="width: 90%; padding: 5px; border: 1px solid #ccc; border-radius: 3px;">
+      </td>
+      <td>
         <button class="btn approve">Approve</button>
         <button class="btn reject">Reject</button>
       </td>
     </tr>
   </table>
+  
   <h2>Employee Profile Management</h2>
   <table>
     <tr>
