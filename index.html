@@ -6,6 +6,7 @@
     <title>Odoo HRMS - Premium Portal</title>
     <!-- Tailwind CSS Browser Component -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="icon" href="https://www.odoo.com/web/image/website/1/favicon" type="image/x-icon">
     <style>
         @keyframes pulse-slow {
             0%, 100% { opacity: 0.4; transform: scale(1); }
@@ -27,11 +28,10 @@
     </div>
 
     <!-- 💳 Glassmorphic White & Dark Blue Content Card Wrapper -->
-    <div class="relative z-10 w-full max-w-4xl mx-4 bg-white/[0.02] backdrop-blur-2xl rounded-[2rem] border border-white/10 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col md:flex-row">
+    <div class="relative z-10 w-full max-w-4xl mx-4 bg-white/[0.02] backdrop-blur-2xl rounded-[2rem] border border-white/10 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col md:flex-row min-h-[620px]">
         
         <!-- 🔬 Left Side: Microscopic Tech Texture Wallpaper Panel -->
         <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center bg-blend-overlay bg-slate-950/85 border-b md:border-b-0 md:border-r border-white/5 relative overflow-hidden">
-            <!-- Subtle Overlay for Text Readability -->
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50 z-0"></div>
 
             <div class="space-y-4 relative z-10">
@@ -43,7 +43,6 @@
                 </p>
             </div>
             
-            <!-- Aesthetic Centered Element (Instead of AI tags) -->
             <div class="my-10 md:my-0 flex items-center justify-center relative h-28 md:h-40 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-md overflow-hidden z-10">
                 <div class="w-4/5 h-[1px] bg-gradient-to-r from-transparent via-blue-400/40 to-transparent shadow-[0_0_10px_rgba(96,165,250,0.3)]"></div>
             </div>
@@ -53,62 +52,145 @@
             </div>
         </div>
 
-        <!-- 🔒 Right Side: Sleek Input Form Panel (White Contrast) -->
+        <!-- 🔒 Right Side: Sleek Input Form Panel with Switcher -->
         <div class="w-full md:w-1/2 p-8 md:p-12 bg-white/[0.01] flex flex-col justify-center">
-            <div class="mb-8 text-center md:text-left">
-                <h1 class="text-4xl font-black text-white tracking-tighter uppercase">odoo</h1>
-                <div class="h-[2px] w-8 bg-blue-500 mt-1 mx-auto md:mx-0"></div>
+            <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-4xl font-black text-white tracking-tighter uppercase">odoo</h1>
+                    <div class="h-[2px] w-8 bg-blue-500 mt-1"></div>
+                </div>
+                
+                <!-- 🔄 Toggle Tabs for Sign In / Sign Up -->
+                <div class="flex p-1 bg-slate-950/80 rounded-xl border border-white/10 self-start">
+                    <button id="tab-signin" class="px-4 py-1.5 text-xs font-medium rounded-lg text-white bg-blue-600 transition-all cursor-pointer" onclick="switchTab('signin')">Sign In</button>
+                    <button id="tab-signup" class="px-4 py-1.5 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer" onclick="switchTab('signup')">Sign Up</button>
+                </div>
             </div>
 
-            <form class="space-y-5">
-                <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Employee ID</label>
-                    <input type="text" placeholder="EX: EMP101" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/60 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all text-sm">
+            <!-- Error Feedback Box -->
+            <div id="error-box" class="hidden mb-4 p-3 bg-red-500/10 border border-red-500/20 text-red-400 text-xs rounded-xl transition-all"></div>
+
+            <!-- 📥 FORM CONTAINER -->
+            <form id="auth-form" class="space-y-4">
+                <!-- Employee ID: Hidden for Sign In initially, shown via JavaScript when required -->
+                <div id="field-empid">
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Employee ID</label>
+                    <input type="text" id="input-empid" placeholder="EX: EMP101" class="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all text-sm">
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Email Address</label>
-                    <input type="email" placeholder="zoya@company.com" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/60 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all text-sm">
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Email Address</label>
+                    <input type="email" id="input-email" required placeholder="zoya@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all text-sm">
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Password</label>
-                    <input type="password" placeholder="••••••••" class="w-full px-4 py-3.5 rounded-xl bg-slate-950/60 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all text-sm">
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Password</label>
+                    <input type="password" id="input-password" required placeholder="••••••••" class="w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/5 transition-all text-sm">
+                    <p id="password-hint" class="hidden text-[10px] text-slate-500 mt-1">Must be 8+ chars with a number & special character.</p>
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">System Access Mode</label>
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5">Role / System Access Mode</label>
                     <div class="relative">
-                        <select class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-white/10 text-slate-300 focus:outline-none focus:border-blue-500 transition-all text-sm cursor-pointer appearance-none">
+                        <select id="input-role" required class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-white/10 text-slate-300 focus:outline-none focus:border-blue-500 transition-all text-sm cursor-pointer appearance-none">
                             <option value="" disabled selected>Select execution flow...</option>
-                            <option value="employee">Employee Dashboard View</option>
+                            <option value="employee">Employee / Staff View</option>
                             <option value="admin">HR Officer Management View</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                            ▼
-                        </div>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">▼</div>
                     </div>
                 </div>
 
                 <!-- Action Button -->
-                <button type="submit" class="w-full mt-2 py-4 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-sm rounded-xl shadow-[0_4px_25px_rgba(37,99,235,0.2)] hover:shadow-[0_4px_30px_rgba(37,99,235,0.35)] active:scale-[0.98] transition-all duration-200 cursor-pointer">
+                <button type="submit" id="submit-btn" class="w-full mt-2 py-3.5 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-sm rounded-xl shadow-[0_4px_25px_rgba(37,99,235,0.2)] hover:shadow-[0_4px_30px_rgba(37,99,235,0.35)] active:scale-[0.98] transition-all duration-200 cursor-pointer">
                     Initialize System Session
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- 🌐 Dynamic Flow Redirection Script -->
+    <!-- 🌐 Dynamic Flow Logic Script -->
     <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const role = document.querySelector('select').value;
-            if (role === 'employee') {
-                window.location.href = 'employee_dashboard.html';
-            } else if (role === 'admin') {
-                window.location.href = 'admin_dashboard.html';
+        let currentMode = 'signin';
+
+        function switchTab(mode) {
+            currentMode = mode;
+            const tabSignIn = document.getElementById('tab-signin');
+            const tabSignUp = document.getElementById('tab-signup');
+            const fieldEmpId = document.getElementById('field-empid');
+            const submitBtn = document.getElementById('submit-btn');
+            const passwordHint = document.getElementById('password-hint');
+            const errorBox = document.getElementById('error-box');
+            
+            errorBox.classList.add('hidden');
+
+            if (mode === 'signin') {
+                tabSignIn.className = "px-4 py-1.5 text-xs font-medium rounded-lg text-white bg-blue-600 transition-all cursor-pointer";
+                tabSignUp.className = "px-4 py-1.5 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer";
+                fieldEmpId.classList.add('hidden'); // Requirements don't mandate Emp ID to log in, only Email + Pass
+                document.getElementById('input-empid').removeAttribute('required');
+                passwordHint.classList.add('hidden');
+                submitBtn.innerText = "Initialize System Session";
             } else {
-                alert('Please select a System Access Mode first!');
+                tabSignIn.className = "px-4 py-1.5 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer";
+                tabSignUp.className = "px-4 py-1.5 text-xs font-medium rounded-lg text-white bg-blue-600 transition-all cursor-pointer";
+                fieldEmpId.classList.remove('hidden'); // Mandatory for Registration
+                document.getElementById('input-empid').setAttribute('required', 'true');
+                passwordHint.classList.remove('hidden');
+                submitBtn.innerText = "Register New Account";
+            }
+        }
+
+        // Initialize view
+        switchTab('signin');
+
+        document.getElementById('auth-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('input-email').value;
+            const password = document.getElementById('input-password').value;
+            const role = document.getElementById('input-role').value;
+            const errorBox = document.getElementById('error-box');
+
+            errorBox.classList.add('hidden');
+
+            if (!role) {
+                errorBox.innerText = "Please select a System Access Role/Mode first!";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            if (currentMode === 'signin') {
+                // Sign In Requirements Flow
+                if (email && password) {
+                    // Simulating a minor check for verification feedback
+                    if (password.length < 4) {
+                        errorBox.innerText = "Access Denied: Incorrect authentication credentials matrix.";
+                        errorBox.classList.remove('hidden');
+                    } else {
+                        submitBtn.innerText = "Processing Telemetry...";
+                        setTimeout(() => {
+                            if (role === 'employee') {
+                                window.location.href = 'employee_dashboard.html';
+                            } else if (role === 'admin') {
+                                window.location.href = 'admin_dashboard.html';
+                            }
+                        }, 800);
+                    }
+                }
+            } else {
+                // Sign Up Security Rules Check
+                const hasNumber = /\d/.test(password);
+                if (password.length < 8 || !hasNumber) {
+                    errorBox.innerText = "Security Rule Violation: Password must be at least 8 characters and contain numbers.";
+                    errorBox.classList.remove('hidden');
+                    return;
+                }
+                
+                submitBtn.innerText = "Sending Verification Link...";
+                setTimeout(() => {
+                    alert("Registration successful! Email verification link dispatched. Please check your corporate inbox.");
+                    switchTab('signin');
+                }, 1000);
             }
         });
     </script>
